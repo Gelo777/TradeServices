@@ -1,0 +1,24 @@
+spring:
+  r2dbc:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    generate-ddl: true
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+
+jwt:
+  password:
+    encoder:
+      secret: ${JWT_PASSWORD_SECRET}
+      iteration: ${JWT_PASSWORD_ITERATION}
+      keylength: ${JWT_PASSWORD_KEYLENGTH}
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+  issuer: ${JWT_ISSUER}
+
+logging:
+  level:
+    org.springframework.data.r2dbc: DEBUG

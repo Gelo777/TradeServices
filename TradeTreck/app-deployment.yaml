@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: combined-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: combined-app
+  template:
+    metadata:
+      labels:
+        app: combined-app
+    spec:
+      containers:
+        - name: trade-trek:latest
+          image: trade-trek:latest
+          ports:
+            - containerPort: 8080
+        - name: redis
+          image: redis:latest
+          ports:
+            - containerPort: 6379
+        - name: postgres
+          image: postgres:latest
+          ports:
+            - containerPort: 5432
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-service
+spec:
+  selector:
+    app: combined-app
+  ports:
+    - protocol: TCP
+      port: 6379
+      targetPort: 6379
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-service
+spec:
+  selector:
+    app: combined-app
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
