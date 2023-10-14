@@ -10,7 +10,7 @@ import proselyteapi.com.tradetrek.model.entity.*;
 public class RedisConfig {
 
     @Bean
-    public ReactiveRedisTemplate<String, Stock> reactiveRedisTemplate(
+    public ReactiveRedisTemplate<String, Stock> reactiveRedisTemplateStock(
             ReactiveRedisConnectionFactory connectionFactory) {
         RedisSerializationContext<String, Stock> serializationContext =
                 RedisSerializationContext
@@ -22,5 +22,14 @@ public class RedisConfig {
                         .build();
 
         return new ReactiveRedisTemplate<>(connectionFactory, serializationContext);
+    }
+
+    @Bean
+    public ReactiveRedisTemplate<String, Boolean> reactiveRedisTemplateApiKey(ReactiveRedisConnectionFactory factory) {
+        return new ReactiveRedisTemplate<>(factory, RedisSerializationContext
+                .<String, Boolean>newSerializationContext(new StringRedisSerializer())
+                .key(new StringRedisSerializer())
+                .value(new GenericToStringSerializer<>(Boolean.class))
+                .build());
     }
 }

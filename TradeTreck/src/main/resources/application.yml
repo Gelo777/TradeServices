@@ -22,3 +22,7 @@ jwt:
 logging:
   level:
     org.springframework.data.r2dbc: DEBUG
+
+spring.security.oauth2.client.registration.google.client-id: 343124527804-i44oi771aie7c6mk6mh1akjnhuje4pob.apps.googleusercontent.com
+spring.security.oauth2.client.registration.google.client-secret: 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
+

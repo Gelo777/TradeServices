@@ -20,7 +20,7 @@ public class SchedulerService {
 
     private final StockRepository stockRepository;
     private final CompanyRepository companyRepository;
-    private final ReactiveRedisTemplate<String, Stock> reactiveRedisTemplate;
+    private final ReactiveRedisTemplate<String, Stock> reactiveRedisTemplateStock;
 
 
     private Random random = new Random();
@@ -64,8 +64,8 @@ public class SchedulerService {
 
     @CacheEvict(value = "stockCache", allEntries = true)
     public void updateCache() {
-        reactiveRedisTemplate.keys("*")
-                .flatMap(reactiveRedisTemplate::delete)
+        reactiveRedisTemplateStock.keys("*")
+                .flatMap(reactiveRedisTemplateStock::delete)
                 .doOnNext(count -> log.info("Очищено {} записей из кеша", count))
                 .subscribe();
     }
