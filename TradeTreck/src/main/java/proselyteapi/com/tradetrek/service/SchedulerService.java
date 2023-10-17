@@ -22,7 +22,6 @@ public class SchedulerService {
     private final CompanyRepository companyRepository;
     private final ReactiveRedisTemplate<String, Stock> reactiveRedisTemplateStock;
 
-
     private Random random = new Random();
 
     @PostConstruct
