@@ -1,13 +1,14 @@
 package proselyteapi.com.tradetrek.model.dto;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
-public class UserDto {
+@Builder
+public class RegistrationDto {
     private String email;
     private String firstName;
     private String lastName;
-    private String username;
-    private String password;
 }

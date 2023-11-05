@@ -58,34 +58,37 @@ public class WebSecurityConfig {
     public WebFilter combinedWebFilter(RequestRateLimiter rateLimiter) {
         List<String> allowedUrls = Arrays.asList("/api/v1/register", "/api/v1/login");
         return (exchange, chain) ->
-                rateLimiter.checkAndRegisterRequest()
-                        .then(Mono.defer(() -> {
-                            String apiKey = exchange.getRequest().getHeaders().getFirst("API-KEY");
-                            String path = exchange.getRequest().getPath().value();
-                            if (allowedUrls.contains(path)) {
-                                return chain.filter(exchange);
-                            } else {
-                                ReactiveValueOperations<String, Boolean> valueOps = reactiveRedisTemplateApiKey.opsForValue();
-                                return valueOps.get(apiKey)
-                                        .flatMap(cachedResult -> {
-                                            if (cachedResult != null && cachedResult) {
-                                                return chain.filter(exchange);
-                                            } else {
-                                                return userRepository.existsByApiKey(apiKey)
-                                                        .flatMap(valid -> {
-                                                            if (Boolean.TRUE.equals(valid)) {
-                                                                return valueOps.set(apiKey, true)
-                                                                        .then(chain.filter(exchange));
-                                                            } else {
-                                                                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-                                                                return exchange.getResponse().setComplete();
-                                                            }
-                                                        });
-                                            }
-                                        });
-                            }
-                        }));
+            rateLimiter.checkAndRegisterRequest()
+                .then(Mono.defer(() -> {
+                    String apiKey = exchange.getRequest().getHeaders().getFirst("API-KEY");
+                    String path = exchange.getRequest().getPath().value();
+                    if (allowedUrls.contains(path)) {
+                        return chain.filter(exchange);
+                    } else {
+                        ReactiveValueOperations<String, Boolean> valueOps = reactiveRedisTemplateApiKey.opsForValue();
+
+                        Mono<Boolean> cachedResultMono = valueOps.get(apiKey).defaultIfEmpty(null);
+                        Mono<Boolean> userExistsMono = userRepository.existsByApiKey(apiKey);
+
+                        return Mono.zip(cachedResultMono, userExistsMono)
+                            .flatMap(tuple -> {
+                                Boolean cachedResult = tuple.getT1();
+                                Boolean userExists = tuple.getT2();
+
+                                if (cachedResult != null && cachedResult) {
+                                    return chain.filter(exchange);
+                                } else if (Boolean.TRUE.equals(userExists)) {
+                                    return valueOps.set(apiKey, true)
+                                        .then(chain.filter(exchange));
+                                } else {
+                                    exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                                    return exchange.getResponse().setComplete();
+                                }
+                            });
+                    }
+                }));
     }
+
 
     private Mono<Void> handleAuthenticationError(ServerWebExchange swe, HttpStatus status, String errorMessage) {
         log.error("IN securityWebFilterChain - {}: {}", status, errorMessage);

@@ -16,6 +16,7 @@
     <modules>
         <module>TradeClient</module>
         <module>TradeTreck</module>
+        <module>EmailService</module>
     </modules>
 
     <properties>

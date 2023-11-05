@@ -25,4 +25,6 @@ logging:
 
 spring.security.oauth2.client.registration.google.client-id: 343124527804-i44oi771aie7c6mk6mh1akjnhuje4pob.apps.googleusercontent.com
 spring.security.oauth2.client.registration.google.client-secret: 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
-
+spring.kafka.bootstrap-servers: your-kafka-broker:9092
+spring.kafka.producer.key-serializer: org.apache.kafka.common.serialization.StringSerializer
+spring.kafka.producer.value-serializer: org.springframework.kafka.support.serializer.JsonSerializer

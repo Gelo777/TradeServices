@@ -1,0 +1,24 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: your-kafka-broker:9092
+      group-id: registrationEmailGroup
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+
+
+  mail:
+    host: smtp.mail.ru
+    port: 465
+    username: signal.test.mail@mail.ru
+    password: AxXgiv70tKf4DTGsumgW
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallback: false
+        ssl:
+          enable: true
