@@ -1,8 +1,10 @@
 package proselyteapi.com.tradetrek.security;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.security.*;
+import java.security.Principal;
 
 @Data
 @NoArgsConstructor

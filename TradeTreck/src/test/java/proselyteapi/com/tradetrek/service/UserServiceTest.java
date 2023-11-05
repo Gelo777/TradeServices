@@ -1,19 +1,22 @@
 package proselyteapi.com.tradetrek.service;
 
-import org.junit.jupiter.api.*;
-import org.mockito.*;
-import org.springframework.security.crypto.password.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import proselyteapi.com.tradetrek.model.exception.*;
-import proselyteapi.com.tradetrek.model.mapper.*;
-import proselyteapi.com.tradetrek.repository.*;
-import reactor.core.publisher.*;
-import reactor.test.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import proselyteapi.com.tradetrek.model.dto.UserDto;
+import proselyteapi.com.tradetrek.model.entity.User;
+import proselyteapi.com.tradetrek.model.exception.EntityNotFoundException;
+import proselyteapi.com.tradetrek.model.mapper.UserMapper;
+import proselyteapi.com.tradetrek.repository.UserRepository;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
-import java.util.*;
+import java.util.UUID;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 class UserServiceTest {
 

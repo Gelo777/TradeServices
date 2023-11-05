@@ -1,16 +1,20 @@
 package proselyteapi.com.tradetrek.service;
 
-import org.junit.jupiter.api.*;
-import org.mockito.*;
-import org.springframework.data.redis.core.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import proselyteapi.com.tradetrek.model.mapper.*;
-import proselyteapi.com.tradetrek.repository.*;
-import reactor.core.publisher.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.data.redis.core.ReactiveValueOperations;
+import proselyteapi.com.tradetrek.model.dto.StockDto;
+import proselyteapi.com.tradetrek.model.entity.Company;
+import proselyteapi.com.tradetrek.model.entity.Stock;
+import proselyteapi.com.tradetrek.model.mapper.StockMapper;
+import proselyteapi.com.tradetrek.repository.CompanyRepository;
+import reactor.core.publisher.Mono;
 
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.when;
 
 class StockServiceTest {
 

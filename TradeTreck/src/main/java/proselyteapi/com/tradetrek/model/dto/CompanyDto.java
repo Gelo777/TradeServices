@@ -1,8 +1,10 @@
 package proselyteapi.com.tradetrek.model.dto;
 
-import lombok.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import reactor.core.publisher.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import proselyteapi.com.tradetrek.model.entity.Stock;
+import reactor.core.publisher.Mono;
 
 @Getter
 @Setter

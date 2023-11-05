@@ -1,8 +1,8 @@
 package proselyteapi.com.tradetrek.model.mapper;
 
-import org.mapstruct.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import proselyteapi.com.tradetrek.model.entity.*;
+import org.mapstruct.Mapper;
+import proselyteapi.com.tradetrek.model.dto.UserDto;
+import proselyteapi.com.tradetrek.model.entity.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

@@ -1,12 +1,12 @@
 package proselyteapi.com.tradeclient.service;
 
-import lombok.*;
-import org.springframework.scheduling.annotation.*;
-import org.springframework.stereotype.*;
-import proselyteapi.com.tradeclient.model.*;
-import proselyteapi.com.tradeclient.repository.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import proselyteapi.com.tradeclient.model.ClientStock;
+import proselyteapi.com.tradeclient.repository.ClientStockRepository;
 
-import java.util.*;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

@@ -1,14 +1,19 @@
 package proselyteapi.com.tradetrek.service;
 
-import org.junit.jupiter.api.*;
-import org.mockito.*;
-import proselyteapi.com.tradeclient.model.*;
-import proselyteapi.com.tradeclient.repository.*;
-import proselyteapi.com.tradeclient.service.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import proselyteapi.com.tradeclient.model.ClientStock;
+import proselyteapi.com.tradeclient.repository.ClientStockRepository;
+import proselyteapi.com.tradeclient.service.StockStatisticsPrinter;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class StockStatisticsPrinterTest {
 

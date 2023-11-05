@@ -5,7 +5,8 @@ spring:
       group-id: registrationEmailGroup
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
+      registation-topic: registrationTopic
+      registation-group-id: registrationEmailGroup
 
   mail:
     host: smtp.mail.ru

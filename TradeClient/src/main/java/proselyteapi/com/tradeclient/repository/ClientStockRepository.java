@@ -1,11 +1,11 @@
 package proselyteapi.com.tradeclient.repository;
 
-import org.springframework.data.r2dbc.repository.*;
-import org.springframework.data.repository.reactive.*;
-import proselyteapi.com.tradeclient.model.*;
-import reactor.core.publisher.*;
+import org.springframework.data.r2dbc.repository.Query;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import proselyteapi.com.tradeclient.model.ClientStock;
+import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.util.List;
 
 public interface ClientStockRepository extends ReactiveCrudRepository<ClientStock, Long> {
 

@@ -1,6 +1,7 @@
 package proselyteapi.com.tradetrek.model.dto;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter

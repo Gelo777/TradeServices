@@ -1,17 +1,20 @@
 package proselyteapi.com.tradeclient.service;
 
-import jakarta.annotation.*;
-import lombok.*;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.*;
-import org.springframework.web.reactive.function.client.*;
-import proselyteapi.com.tradeclient.model.*;
-import proselyteapi.com.tradeclient.repository.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import reactor.core.publisher.*;
-import reactor.core.scheduler.*;
+import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
+import proselyteapi.com.tradeclient.model.ClientStock;
+import proselyteapi.com.tradeclient.repository.ClientStockRepository;
+import proselyteapi.com.tradetrek.model.dto.CompanyDto;
+import proselyteapi.com.tradetrek.model.dto.StockDto;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Service
 @RequiredArgsConstructor

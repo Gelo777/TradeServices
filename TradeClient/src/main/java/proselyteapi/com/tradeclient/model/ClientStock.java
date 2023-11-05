@@ -1,7 +1,9 @@
 package proselyteapi.com.tradeclient.model;
 
-import lombok.*;
-import org.springframework.data.relational.core.mapping.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.relational.core.mapping.Table;
 
 @Table(name = "client_stock")
 @Getter

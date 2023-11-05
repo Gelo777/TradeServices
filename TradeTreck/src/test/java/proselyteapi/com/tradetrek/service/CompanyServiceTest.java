@@ -1,15 +1,18 @@
 package proselyteapi.com.tradetrek.service;
 
-import org.junit.jupiter.api.*;
-import org.mockito.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import proselyteapi.com.tradetrek.model.mapper.*;
-import proselyteapi.com.tradetrek.repository.*;
-import reactor.core.publisher.*;
-import reactor.test.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import proselyteapi.com.tradetrek.model.dto.CompanyDto;
+import proselyteapi.com.tradetrek.model.entity.Company;
+import proselyteapi.com.tradetrek.model.mapper.CompanyMapper;
+import proselyteapi.com.tradetrek.repository.CompanyRepository;
+import reactor.core.publisher.Flux;
+import reactor.test.StepVerifier;
 
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 class CompanyServiceTest {
 

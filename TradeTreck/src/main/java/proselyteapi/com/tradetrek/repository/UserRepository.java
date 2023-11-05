@@ -1,9 +1,9 @@
 package proselyteapi.com.tradetrek.repository;
 
-import org.springframework.data.repository.reactive.*;
-import org.springframework.stereotype.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import reactor.core.publisher.*;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
+import org.springframework.stereotype.Repository;
+import proselyteapi.com.tradetrek.model.entity.User;
+import reactor.core.publisher.Mono;
 
 @Repository
 public interface UserRepository extends ReactiveCrudRepository<User, Long> {

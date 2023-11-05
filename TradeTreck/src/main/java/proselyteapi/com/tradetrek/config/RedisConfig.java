@@ -1,10 +1,14 @@
 package proselyteapi.com.tradetrek.config;
 
-import org.springframework.context.annotation.*;
-import org.springframework.data.redis.connection.*;
-import org.springframework.data.redis.core.*;
-import org.springframework.data.redis.serializer.*;
-import proselyteapi.com.tradetrek.model.entity.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.data.redis.serializer.GenericToStringSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
+import proselyteapi.com.tradetrek.model.entity.Stock;
 
 @Configuration
 public class RedisConfig {

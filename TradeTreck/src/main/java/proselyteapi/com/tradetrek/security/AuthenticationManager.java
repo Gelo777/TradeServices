@@ -1,12 +1,12 @@
 package proselyteapi.com.tradetrek.security;
 
-import lombok.*;
-import org.springframework.security.authentication.*;
-import org.springframework.security.core.*;
-import org.springframework.stereotype.*;
-import proselyteapi.com.tradetrek.model.exception.*;
-import proselyteapi.com.tradetrek.service.*;
-import reactor.core.publisher.*;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.ReactiveAuthenticationManager;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Component;
+import proselyteapi.com.tradetrek.model.exception.UnauthorizedException;
+import proselyteapi.com.tradetrek.service.UserService;
+import reactor.core.publisher.Mono;
 
 @Component
 @RequiredArgsConstructor

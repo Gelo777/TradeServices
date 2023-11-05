@@ -1,9 +1,10 @@
 package proselyteapi.com.tradetrek.model.entity;
 
-import lombok.*;
-import org.springframework.data.annotation.*;
-import org.springframework.data.relational.core.mapping.*;
-import reactor.core.publisher.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+import reactor.core.publisher.Mono;
 
 @Table(name = "companies")
 @Getter

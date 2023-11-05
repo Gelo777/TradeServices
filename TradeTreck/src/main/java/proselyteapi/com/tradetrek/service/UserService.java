@@ -1,18 +1,19 @@
 package proselyteapi.com.tradetrek.service;
 
-import lombok.*;
-import lombok.extern.slf4j.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.security.crypto.password.*;
-import org.springframework.stereotype.*;
-import proselyteapi.com.tradetrek.model.dto.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import proselyteapi.com.tradetrek.model.exception.*;
-import proselyteapi.com.tradetrek.model.mapper.*;
-import proselyteapi.com.tradetrek.repository.*;
-import reactor.core.publisher.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import proselyteapi.com.tradetrek.model.dto.RegistrationDto;
+import proselyteapi.com.tradetrek.model.dto.UserDto;
+import proselyteapi.com.tradetrek.model.entity.User;
+import proselyteapi.com.tradetrek.model.exception.EntityNotFoundException;
+import proselyteapi.com.tradetrek.model.mapper.UserMapper;
+import proselyteapi.com.tradetrek.repository.UserRepository;
+import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.util.UUID;
 
 @Slf4j
 @Service

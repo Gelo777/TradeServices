@@ -1,17 +1,19 @@
 package proselyteapi.com.tradetrek.service;
 
-import jakarta.annotation.*;
-import lombok.*;
-import lombok.extern.slf4j.*;
-import org.springframework.cache.annotation.*;
-import org.springframework.data.redis.core.*;
-import org.springframework.scheduling.annotation.*;
-import org.springframework.stereotype.*;
-import proselyteapi.com.tradetrek.model.entity.*;
-import proselyteapi.com.tradetrek.repository.*;
-import reactor.core.publisher.*;
+import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.data.redis.core.ReactiveRedisTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+import proselyteapi.com.tradetrek.model.entity.Company;
+import proselyteapi.com.tradetrek.model.entity.Stock;
+import proselyteapi.com.tradetrek.repository.CompanyRepository;
+import proselyteapi.com.tradetrek.repository.StockRepository;
+import reactor.core.publisher.Mono;
 
-import java.util.*;
+import java.util.Random;
 
 @Service
 @Slf4j
